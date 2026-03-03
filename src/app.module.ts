@@ -7,6 +7,7 @@ import { SeederService } from './base/seeder.service';
 import { Role } from './user/role.entity';
 import { CompanyModuleModule } from './company/company.module';
 import { Company } from './company/company.entity';
+import { User } from './user/user.entity';
 
 @Module({
     imports: [
@@ -20,7 +21,7 @@ import { Company } from './company/company.entity';
             autoLoadEntities: true,
             synchronize: true,
         }),
-        TypeOrmModule.forFeature([Role, Company]),
+        TypeOrmModule.forFeature([Role, Company, User]),
         UserModuleModule,
         CompanyModuleModule,
     ],
