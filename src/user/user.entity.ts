@@ -42,4 +42,7 @@ export class User extends EntityBase {
 
     @Column({ default: false })
     isSignature: boolean;
+
+    @Column('json')
+    permission: string[];
 }

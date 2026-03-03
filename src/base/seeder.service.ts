@@ -10,6 +10,7 @@ import { Role } from 'src/user/role.entity';
 import { User } from 'src/user/user.entity';
 import { Repository } from 'typeorm';
 import { hashPassword } from './password.generator';
+import { userPermission } from 'src/user/user.permission';
 
 @Injectable()
 export class SeederService implements OnApplicationBootstrap {
@@ -62,6 +63,7 @@ export class SeederService implements OnApplicationBootstrap {
                 passwordHash: passwordHash,
                 role: role,
                 company: company,
+                permission: userPermission,
             });
             await this.userRepository.save(user);
         }
