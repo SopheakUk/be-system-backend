@@ -8,6 +8,7 @@ import { Role } from './user/role.entity';
 import { CompanyModuleModule } from './company/company.module';
 import { Company } from './company/company.entity';
 import { User } from './user/user.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
     imports: [
@@ -20,6 +21,13 @@ import { User } from './user/user.entity';
             database: 'be-system',
             autoLoadEntities: true,
             synchronize: true,
+        }),
+        ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath:
+                process.env.NODE_ENV === 'production'
+                    ? '.env.production'
+                    : '.env.development',
         }),
         TypeOrmModule.forFeature([Role, Company, User]),
         UserModuleModule,
