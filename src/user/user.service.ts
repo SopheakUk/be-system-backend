@@ -40,12 +40,12 @@ export class UserService {
         const payload: UserJwtDto = {
             username: user.userName,
             id: user.oid,
-            role: user.permission,
+            //role: user.permission,
+            role: [],
         };
 
-        const token: UserToken = {
-            access_token: this.jwtService.sign(payload),
-        };
+        const token = new UserToken();
+        token.data = this.jwtService.sign(payload);
 
         return token;
     }
