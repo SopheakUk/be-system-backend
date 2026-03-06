@@ -40,8 +40,6 @@ export class UserService {
         const payload: UserJwtDto = {
             username: user.userName,
             id: user.oid,
-            //role: user.permission,
-            role: [],
         };
 
         const token = new UserToken();
